@@ -1,0 +1,43 @@
+﻿<Page
+    x:Class="AppZoo.Pager.ZoomPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:AppZoo.Pager"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    RequestedTheme="Dark"
+    SizeChanged="Page_SizeChanged">
+
+    <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="60" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="70" />
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+
+            <Button Content="Voltar" HorizontalAlignment="Left" Click="Button_Click" Margin="5,0"/>
+            <TextBlock x:Name="txtNome" Grid.ColumnSpan="2" HorizontalAlignment="Center" Foreground="{StaticResource ListViewItemOverlayForegroundThemeBrush}" Style="{StaticResource HeaderTextBlockStyle}" />
+        </Grid>
+
+        <Grid Grid.Row="1" Background="White">
+            <ScrollViewer x:Name="svImageZoom"         
+                        MaxZoomFactor="3"
+                        MinZoomFactor="1"
+                        ZoomMode="Enabled"                          
+                        HorizontalScrollBarVisibility="Auto"
+                        VerticalScrollBarVisibility="Auto"
+                        HorizontalAlignment="Center" 
+                        VerticalAlignment="Center">
+
+                <Image x:Name="imgZoom" Stretch="Uniform"                      
+                        Height="{Binding Path=ViewportHeight, ElementName=svImageZoom}" HorizontalAlignment="Center" VerticalAlignment="Center" />
+            </ScrollViewer>
+        </Grid>
+    </Grid>
+</Page>
